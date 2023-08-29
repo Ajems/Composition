@@ -1,5 +1,7 @@
 package com.example.composition.presentation.fragment
 
+import android.os.Build
+import android.os.Build.VERSION
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -52,7 +54,13 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun parseArgs(){
-        gameResult = requireArguments().getSerializable(KEY_GAME_RESULT) as GameResult
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            requireArguments().getParcelable(KEY_GAME_RESULT, GameResult::class.java)
+        } else {
+            requireArguments().getParcelable(KEY_GAME_RESULT)
+        }?.let {
+            gameResult = it
+        }
     }
 
     private fun retryGame() {
@@ -68,7 +76,7 @@ class GameFinishedFragment : Fragment() {
         fun newInstance(gameResult: GameResult): GameFinishedFragment{
             return GameFinishedFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(KEY_GAME_RESULT, gameResult)
+                    putParcelable(KEY_GAME_RESULT, gameResult)
                 }
             }
         }
