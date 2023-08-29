@@ -45,6 +45,7 @@ class GameFinishedFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callBack)
+        binding.buttonRetry.setOnClickListener { retryGame() }
     }
 
 
