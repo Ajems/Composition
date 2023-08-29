@@ -27,4 +27,10 @@ class ChooseLevelFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+    companion object {
+        fun newInstance(): ChooseLevelFragment {
+            return ChooseLevelFragment()
+        }
+    }
 }
