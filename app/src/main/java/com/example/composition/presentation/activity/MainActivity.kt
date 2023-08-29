@@ -1,12 +1,14 @@
 package com.example.composition.presentation.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.composition.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("DiscouragedApi", "InternalInsetResource")
     private fun calculateStatusAndNavigationBar() {
         val resourceIdSB = resources.getIdentifier("status_bar_height", "dimen", "android")
         val resourceIdNB = resources.getIdentifier("navigation_bar_height", "dimen", "android")

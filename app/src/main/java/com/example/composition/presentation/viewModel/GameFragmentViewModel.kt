@@ -65,6 +65,7 @@ class GameFragmentViewModel(application: Application): AndroidViewModel(applicat
     fun startGame(level: Level){
         getGameSettings(level)
         generateQuestion()
+        updateProgress()
         startTimer()
     }
 
@@ -87,6 +88,7 @@ class GameFragmentViewModel(application: Application): AndroidViewModel(applicat
     }
 
     private fun calculatePercentOfRightAnswer(): Int{
+        if (countOfQuestion == 0) return 0
         return ((countOfRightAnswer / countOfQuestion.toDouble()) * TOTAL_PERCENT).toInt()
     }
 
