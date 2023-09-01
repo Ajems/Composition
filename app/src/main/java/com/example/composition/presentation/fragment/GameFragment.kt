@@ -1,7 +1,6 @@
 package com.example.composition.presentation.fragment
 
 import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,10 +11,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
 import com.example.composition.domain.entity.GameResult
-import com.example.composition.domain.entity.Level
 import com.example.composition.presentation.viewModel.GameViewModel
 import com.example.composition.presentation.viewModelFactory.GameViewModelFactory
 
@@ -45,10 +42,6 @@ class GameFragment : Fragment() {
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
         get() = _binding ?: throw RuntimeException("ChooseLevelFragment is null")
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -120,15 +113,12 @@ class GameFragment : Fragment() {
             android.R.color.holo_red_light
         }
         return ContextCompat.getColor(requireContext(), colorResId)
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-
 
     private fun launchGameFinishedFragment(gameResult: GameResult){
         findNavController().navigate(
