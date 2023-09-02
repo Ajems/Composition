@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.composition.R
 import com.example.composition.databinding.FragmentChooseLevelBinding
 import com.example.composition.domain.entity.Level
 
@@ -31,7 +30,6 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun setChooseLevelButtonsListener() {
-        var gameFragment: GameFragment? = null
         with(binding) {
             buttonLevelTest.setOnClickListener{
                 launchGameFragment(Level.TEST)
